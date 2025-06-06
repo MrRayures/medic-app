@@ -1,0 +1,21 @@
+/*-----------------------------------------------------------------------------------------------------
+  [component:container]
+-------------------------------------------------------------------------------------------------------*/
+
+.c-container {
+    max-width: var(--layoutMaxWidth);
+
+    padding-left: var(--layoutPadding);
+    padding-right: var(--layoutPadding);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq(max, bp(xxlg)) {
+        --layoutPadding: 2.4rem;
+    }
+
+    @include mq(max, bp(md)) {
+        --layoutPadding: 0;
+    }
+}

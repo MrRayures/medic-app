@@ -1,0 +1,35 @@
+<!-- index.html -->
+{% extends "templates/layout.html" %}
+
+<!-- //START page variables -->
+<!-- prettier-ignore -->
+{% set page_title = "Créer une partie" %}
+{% set body_class = "" %}
+
+{% set header = {backUrl: false} %}
+<!-- //END page variables -->
+
+<!-- //START page Content -->
+{% block page_content %}
+
+<h1 class="">{{page_title}}</h1>
+
+<form action="game-start.html">
+    <div class="c-field">
+        <label for="game_name">Nom de la partie *</label>
+        <input type="text" id="game_name" />
+    </div>
+
+    <div class="c-field">
+        <label for="game_death" data-checked-label="Oui" data-unchecked-label="Non"
+            >Mort active</label
+        >
+        <input type="checkbox" id="game_death" />
+    </div>
+
+    <button type="submit" class="c-button c-button--primary">Créer la partie</button>
+</form>
+
+{% endblock %}
+
+<!-- //END page Content -->

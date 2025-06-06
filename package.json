@@ -1,0 +1,59 @@
+{
+    "name": "frontend-starter",
+    "version": "1.0.0",
+    "description": "html/scss framework powered by @frctl & Nunjucks",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MrRayures/frontend-starter.git"
+    },
+    "author": "François Leproust",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/MrRayures/frontend-starter/issues"
+    },
+    "scripts": {
+        "clean": "recursive-delete dist",
+        "scss": "sass --style=compressed --error-css --update src/assets/styles/scss/app.scss dist/assets/css/app.css",
+        "img": "mkdirp -p dist/assets/img && recursive-copy src/assets/img dist/assets/img",
+        "icons": "mkdirp -p dist/assets/icons && recursive-copy src/assets/icons dist/assets/icons",
+        "sprite": "svg-sprite --symbol --log --symbol-sprite=sprite/icons.svg --symbol-dest=src/assets/icons/ src/assets/icons/*.svg",
+        "js": "concat-glob-cli -f src/assets/js/*.js -o src/assets/app.js",
+        "html": "nunjucks-to-html src/*.{njk,html} --config config.nunjucks.js  --dest dist/ --flatten true",
+        "build:css": "npm run scss",
+        "build:js": "npm run js",
+        "build:html": "npm run html",
+        "build:img": "npm run img",
+        "build:icons": "npm run img",
+        "build:sprite": "npm run sprite",
+        "watch:css": "onchange src/assets/styles/scss/**/*.scss -- npm run build:css",
+        "watch:js": "onchange src/assets/js/*.js -- npm run build:js",
+        "watch:html": "onchange src/*.html src/templates/**/*.html -- npm run build:html",
+        "watch:img": "onchange src/assets/img/**/*.{jpg,jpeg,png,svg} -- npm run build:img",
+        "watch:icons": "onchange src/assets/icons/*.{svg} -- npm run build:icons && npm run build:sprite",
+        "build": "npm-run-all clean copy build:*",
+        "dev": "npm-run-all --parallel serve watch:*",
+        "serve": "browser-sync start --server dist/ --files dist/assets/css/*.css, dist/assets/img/**/*.{jpg,jpeg,png,svg}, dist/assets/js/*.js, dist/*.html"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.27.5",
+        "chokidar": "^3.5.2",
+        "chokidar-cli": "^2.1.0",
+        "concat-glob-cli": "^0.1.0",
+        "mkdirp": "^1.0.4",
+        "npm-run-all": "^4.1.5",
+        "nunjucks": "^3.2.3",
+        "nunjucks-to-html": "^1.0.1",
+        "onchange": "^7.1.0",
+        "recursive-fs": "^2.1.0",
+        "rollup": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "sass": "^1.26.5",
+        "svg-sprite": "^1.5.3",
+        "svgo": "^1.3.2",
+        "uglify-js": "^3.14.2",
+        "hygen": "^6.2.11"
+    },
+    "volta": {
+        "node": "22.13.0"
+    }
+}

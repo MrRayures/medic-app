@@ -1,0 +1,40 @@
+/*-----------------------------------------------------------------------------------------------------
+  [utilities:color]
+-------------------------------------------------------------------------------------------------------*/
+/*
+* Color
+* Exemple :
+*   .u-color-primary { color: var(--primary)!important; }
+*/
+@each $color in $colors {
+    .u-color-#{$color} {
+        color: var(--color-#{$color}) !important;
+    }
+}
+
+/*
+* Background
+* Exemple :
+*   .u-bgcolor-primary { background-color: var(--primary)!important; }
+*/
+@each $color in $bgColors {
+    .u-bgcolor-#{$color} {
+        background-color: var(--color-#{$color}) !important;
+    }
+}
+
+/*
+* Border
+* Exemple :
+*   .u-border-neutral-100 { background-color: var(--neutral-100)!important; }
+*/
+[class*='u-border-'] {
+    border-width: 1px;
+    border-style: solid;
+}
+
+@each $color in $borderColors {
+    .u-border-#{$color} {
+        border-color: var(--color-#{$color}) !important;
+    }
+}

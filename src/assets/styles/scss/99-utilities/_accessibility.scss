@@ -1,0 +1,34 @@
+/*-----------------------------------------------------------------------------------------------------
+  [utilities:accessibility]
+-------------------------------------------------------------------------------------------------------*/
+
+// Visible for screen reader
+.u-sr-only {
+    @include sr-only;
+}
+
+@include mq(max, bp(md)) {
+    .u-sr-only\@md {
+        @include sr-only;
+    }
+}
+
+
+//Show only on focus
+.u-show-on-focus {
+    position: absolute;
+    top: -100%;
+    z-index: var(--zindex-overlay);
+    
+    &:focus {
+        top: 0;
+        background-color: black;
+        color: #FFF;
+    }
+}
+
+
+
+
+
+

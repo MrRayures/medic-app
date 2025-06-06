@@ -1,0 +1,31 @@
+/*
+* Variables concernant les fonts
+*/
+
+:root {
+    --font-primary: 'VT323', sans-serif;
+    --font-secondary: 'Arial', sans-serif;
+}
+
+$fontFamily: (
+    'primary': 'Arial',
+    'secondary': 'VT323',
+);
+
+$fontSizes: (
+    '12': 1.2rem,
+    '14': 1.4rem,
+    '16': 1.6rem,
+    '18': 1.8rem,
+);
+
+$fontWeight: (
+    '400': 400,
+    '500': 500,
+    '600': 600,
+    '700': 700,
+);
+
+$titleSize: '0', '1', '2', '3', '4', '5';
+
+$textSize: 'xl', 'lg', 'md', 'sm', 'xs';

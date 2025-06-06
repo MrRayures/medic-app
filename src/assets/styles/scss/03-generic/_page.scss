@@ -1,0 +1,93 @@
+/*
+* Style de base html
+*/
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text);
+    background: var(--bg);
+
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-primary);
+    color: var(--title);
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.4;
+}
+
+a {
+    color: var(--text);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin: 0;
+    }
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+    font-style: italic;
+    height: auto;
+}
+
+hr {
+    background: gray;
+    border: none;
+    height: 1px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    th {
+        border: 1px solid gray;
+        padding: 0.2em;
+        text-align: left;
+    }
+
+    td {
+        border: 1px solid gray;
+        padding: 0.2em;
+    }
+}
+
+sup,
+sub {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.4em;
+}
+
+sub {
+    top: 0.4em;
+}
