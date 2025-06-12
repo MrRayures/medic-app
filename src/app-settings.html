@@ -6,26 +6,26 @@
 {% set page_title = "Options" %}
 {% set body_class = "" %}
 
-{% set header = { backUrl: "index.html" } %}
+{% set header = { show: true, backUrl: "index.html" } %}
 <!-- //END page variables -->
 
 <!-- //START page Content -->
 {% block page_content %}
+<div class="c-content c-content--page">
+    <h1 class="c-title">{{page_title}}</h1>
 
-<h1 class="">{{page_title}}</h1>
-
-<ul class="c-buttonList">
-    <li class="c-buttonList__item">
-        <button class="c-button c-button--primary">Exportez les données</button>
-    </li>
-    <li class="c-buttonList__item">
-        <button class="c-button c-button--primary">Importer les données</button>
-    </li>
-    <li class="c-buttonList__item">
-        <button class="c-button c-button--primary">Supprimer les données</button>
-    </li>
-</ul>
-
+    <ul class="c-buttonList">
+        <li class="c-buttonList__item">
+            <button class="c-button c-button--primary">Exportez les données</button>
+        </li>
+        <li class="c-buttonList__item">
+            <button class="c-button c-button--primary">Importer les données</button>
+        </li>
+        <li class="c-buttonList__item">
+            <button class="c-button c-button--primary">Supprimer les données</button>
+        </li>
+    </ul>
+</div>
 {% endblock %}
 
 <!-- //END page Content -->

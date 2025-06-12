@@ -3,15 +3,20 @@
         <nav class="c-header__nav" role="navigation" aria-label="main navigation">
             {% if header.backUrl %}
             <a
-                href="index.html"
+                href="{{header.backUrl}}"
                 class="c-button c-button--primary c-button--icon-left c-icon-arrow-left"
-                >Retour</a
             >
+                Retour
+            </a>
+            {% endif %} {% if header.homeBtn %}
+            <a href="index.html" class="c-button c-button--primary"> Accueil </a>
             {% endif %}
             <a href="index.html" class="c-header__logo">
                 <span class="c-icon-cross c-icon--left" aria-hidden="true"></span>MEDIC
             </a>
-            <a href="app-settings.html" class="c-button c-button--primary u-ml-auto">Options</a>
+            {% if header.statsBtn %}
+            <a href="game-stats.html" class="c-button c-button--primary u-ml-auto">Stats</a>
+            {% endif %}
         </nav>
     </div>
 </header>

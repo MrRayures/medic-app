@@ -2,8 +2,10 @@
   [component:input]
 -------------------------------------------------------------------------------------------------------*/
 
-.c-form-input {
-    border-color: #ff0000;
-    &:focus {
-    }
+.c-input {
+    width: 100%;
+    padding: 1.6rem;
+    height: 6rem;
+    font-size: 4rem;
+    color: black;
 }

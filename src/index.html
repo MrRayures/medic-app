@@ -12,14 +12,22 @@
 <!-- //START page Content -->
 {% block page_content %}
 
-<div class="c-content">
+<div class="c-content c-content--hp">
     <h1 class="c-logo c-icon-cross c-icon--left">
         <span class="" aria-hidden="true"></span> Medic
     </h1>
 
-    <a class="c-button c-button--primary" href="game-add.html">Nouvelle partie</a>
-    <a class="c-button c-button--primary" href="game-list.html">Charger une partie</a>
-    <a class="c-button c-button--primary" href="app-settings.html">Options</a>
+    <ul class="c-buttonList c-buttonList--center">
+        <li class="c-buttonList__item">
+            <a class="c-button c-button--primary" href="game-add.html">Nouvelle partie</a>
+        </li>
+        <li class="c-buttonList__item">
+            <a class="c-button c-button--primary" href="game-list.html">Charger une partie</a>
+        </li>
+        <li class="c-buttonList__item">
+            <a class="c-button c-button--primary" href="app-settings.html">Options</a>
+        </li>
+    </ul>
 </div>
 
 {% endblock %}

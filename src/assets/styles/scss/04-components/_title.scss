@@ -1,14 +1,13 @@
 /*-----------------------------------------------------------------------------------------------------
-  [component:logo]
+  [component:content]
 -------------------------------------------------------------------------------------------------------*/
 
-.c-logo {
-    --iconSize: 6.4rem;
+.c-title {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+}
 
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 12.8rem;
-    text-transform: uppercase;
-    font-weight: 400;
+.c-subtitle {
+    font-size: 3rem;
+    margin-bottom: 2rem;
 }
