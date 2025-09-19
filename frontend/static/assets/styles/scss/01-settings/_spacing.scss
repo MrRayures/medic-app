@@ -1,0 +1,28 @@
+/*
+* Variables concernant les espacements (paddings, margins...)
+* L'identifiant du spacing correspond à sa valeur en pixel
+* Exemple : 15 = 15rem = 1.5rem
+*/
+
+$spacing: (
+    '0': 0,
+    '2': 0.2rem,
+    '4': 0.4rem,
+    '6': 0.6rem,
+    '8': 0.8rem,
+    '12': 1.2rem,
+    '16': 1.6rem,
+    '24': 2.4rem,
+    '32': 3.2rem,
+    '40': 4rem,
+    '48': 4.8rem,
+    '56': 5.6rem,
+    '64': 6.4rem,
+    '72': 7.2rem,
+    '88': 8.8rem,
+    '96': 9.6rem,
+    '120': 12rem,
+    '128': 12.8rem,
+    '160': 16rem,
+    'auto': auto,
+);

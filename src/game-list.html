@@ -2,18 +2,39 @@
 {% extends "templates/layout.html" %}
 
 <!-- //START page variables -->
-<!-- prettier-ignore -->
-{% set page_title = "Accueil" %}
+{% set page_title = "Charger une partie" %}
 {% set body_class = "" %}
+{% set content_class = "c-content--page" %}
 
-{% set header = {backUrl: false} %}
+{% set header = { show: true, backUrl: "index.html" } %}
 <!-- //END page variables -->
 
 <!-- //START page Content -->
 {% block page_content %}
+    <h1 class="c-title">{{ page_title }}</h1>
 
-<h1 class="">{{page_title}}</h1>
+    <ul class="c-gameList">
+        <li class="c-gameList__item">
+            <div class="c-gameCard">
+                <div class="c-gameCard__infos">
+                    <h2 class="c-gameCard__title">Op Night Corp</h2>
+                    <p>02.08.2025 à Thouars</p>
+                </div>
+                <button class="c-button c-button--secondary">Charger</button>
+            </div>
+        </li>
 
+        <li class="c-gameList__item">
+            <div class="c-gameCard">
+                <div class="c-gameCard__infos">
+                    <h2 class="c-gameCard__title">OLD scarab</h2>
+                    <p>19.01.2025 à Touvérac</p>
+                </div>
+                <button class="c-button c-button--secondary">Charger</button>
+            </div>
+        </li>
+    </ul>
+
+    <a href="index.html" class="c-button c-button--primary c-button--back">Retour</a>
 {% endblock %}
-
 <!-- //END page Content -->

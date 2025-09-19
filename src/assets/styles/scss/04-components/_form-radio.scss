@@ -1,85 +1,54 @@
-/*-----------------------------------------------------------------------------------------------------
-  [component:form-radio]
-  Source : https://medium.com/claritydesignsystem/pure-css-accessible-checkboxes-and-radios-buttons-54063e759bb3;
--------------------------------------------------------------------------------------------------------*/
+/*
+* Radio
+*/
 
-.c-form-radio {
-    --radioSize: 2rem;
+.c-radio {
+    --inputCheckedColor: var(--primary);
+    --inputBorderColor: white;
+    --inputWidth: 2rem;
+
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: var(--inputWidth);
+
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    width: var(--inputWidth);
+    height: var(--inputWidth);
+    display: block;
+    border: 1px solid var(--inputBorderColor);
+    background: transparent;
     position: relative;
-}
+    cursor: pointer;
 
-.c-form-radio__input {
-    opacity: 0;
-    position: absolute;
-}
+    flex-shrink: 0;
 
-.c-form-radio__label {
-    position: relative;
-    display: inline-flex;
-    padding-left: calc(var(--radioSize) + 1);
-    font-size: 1.6rem;
-    font-family: var(--font-primary);
-    color: var(--text);
-}
+    &:after {
+        content: '';
+        display: none;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 1.6rem auto;
+        border-radius: var(--inputWidth);
 
-.c-form-radio__label:before,
-.c-form-radio__label:after {
-    content: '';
-    position: absolute;
-}
+        background-color: var(--inputCheckedColor);
+        width: calc(var(--inputWidth) - 0.8rem);
+        height: calc(var(--inputWidth) - 0.8rem);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-.c-form-radio__label:before {
-    height: var(--radioSize);
-    width: var(--radioSize);
-    border: 1px solid grey;
-    border-radius: var(--radioSize);
-    left: 0px;
-    top: 0px;
-}
+    &:checked {
+        &:after {
+            display: block;
+        }
+    }
 
-.c-form-radio__label:after {
-    height: (var(--radioSize) - 1);
-    width: (var(--radioSize) - 1);
-    border-radius: var(--radioSize);
-    left: 0.5rem;
-    top: 0.5rem;
-}
-
-.c-form-radio__input + .c-form-radio__label:after {
-    content: none;
-}
-
-/*
-* Checked
-*/
-.c-form-radio__input:checked + .c-form-radio__label {
-    color: var(--primary);
-}
-
-.c-form-radio__input:checked + .c-form-radio__label:after {
-    content: '';
-    background-color: var(--primary);
-}
-
-.c-form-radio__input:checked + .c-form-radio__label:before {
-    border-color: var(--primary);
-}
-
-.c-form-radio__input:focus + .c-form-radio__label::before {
-    outline: 3px dotted var(--primary);
-    outline-offset: 2px;
-}
-
-/*
-* Disabled
-*/
-.c-form-radio__input:disabled + .c-form-radio__label {
-    opacity: 0.6;
-}
-
-/*
-* Focus
-*/
-.c-form-radio__input:focus-visible + .c-form-radio__label:before {
-    @include accessible_outline;
+    &:disabled {
+        background-color: var(--neutral-100);
+        cursor: default;
+    }
 }

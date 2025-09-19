@@ -2,37 +2,64 @@
   [component:header]
 -------------------------------------------------------------------------------------------------------*/
 .c-header {
-    padding: 0 var(--layoutPadding);
+    --headerSize: 6.5rem;
+
+    background-color: var(--bg);
+    flex-shrink: 0;
+    @media (orientation: portrait) {
+        position: sticky;
+        top: 0;
+        z-index: var(--zindex-sticky);
+    }
 }
+
 .c-header__content {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+
+    @media (orientation: landscape) {
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100vh;
+        width: var(--headerSize);
+
+        position: sticky;
+        top: 0;
+        z-index: var(--zindex-sticky);
+
+        border-right: 1px solid white;
+    }
+
+    @media (orientation: portrait) {
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: 100%;
+        height: var(--headerSize);
+
+        border-bottom: 1px solid white;
+    }
 }
 
 .c-header__nav {
-    padding: 1.2rem 0;
-    border-bottom: 2px solid var(--primary);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2.4rem;
-    position: relative;
+
+    @media (orientation: landscape) {
+        flex-direction: column;
+    }
+
+    @media (orientation: portrait) {
+        flex-direction: row;
+    }
 }
 
 .c-header__logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 3.2rem;
-    text-decoration: none;
-
-    [class*='c-icon'] {
-        --iconSize: 2.4rem;
-        position: relative;
-        top: 0.2rem;
+    img {
+        max-width: 4.5rem;
     }
 }

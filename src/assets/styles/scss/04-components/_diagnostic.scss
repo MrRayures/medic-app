@@ -1,0 +1,34 @@
+/*
+* Diagnostic
+*/
+
+.c-diagnostic {
+    --loaderHeight: 6rem;
+
+    height: var(--loaderHeight);
+    padding: 0 1.6rem;
+    border: 1px solid white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.c-diagnostic__progress {
+    background-color: white;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 50ms linear;
+}
+
+.c-diagnostic__text {
+    color: white;
+    mix-blend-mode: difference;
+}
+
+.c-diagnostic__percent {
+    color: white;
+    mix-blend-mode: difference;
+}

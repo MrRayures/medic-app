@@ -1,0 +1,31 @@
+/*
+* c-gameCard
+*/
+
+.c-gameCard {
+    padding: 2rem;
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    gap: 2.4rem;
+
+    @include mq(max, bp(md)) {
+        flex-direction: column;
+    }
+
+    &:hover {
+        .c-button {
+            --btnBgColor: var(--primary);
+            --btnColor: black;
+        }
+    }
+}
+
+.c-gameCard__infos {
+    font-size: 1.6rem;
+    flex-grow: 1;
+}
+
+.c-gameCard__title {
+    font-size: 2rem;
+}

@@ -1,8 +1,18 @@
-/*-----------------------------------------------------------------------------------------------------
-  [component:footer]
--------------------------------------------------------------------------------------------------------*/
+/*
+* footer
+*/
 
 .c-footer {
-}
-.c-footer__content {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: var(--zindex-fixed);
+    background-color: rgba(0, 0, 0, 0.6);
+
+    padding: 0.4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2.4rem;
+    font-size: 1.2rem;
 }

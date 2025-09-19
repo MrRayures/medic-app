@@ -1,0 +1,53 @@
+/*-----------------------------------------------------------------------------------------------------
+  [component:list]
+-------------------------------------------------------------------------------------------------------*/
+
+/*
+* c-buttonList
+*/
+.c-buttonList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    .c-button {
+        max-width: 25rem;
+        width: 100%;
+    }
+}
+
+.c-buttonList__item {
+    width: 100%;
+
+    .c-button {
+        width: 100%;
+    }
+}
+
+// Center
+
+/*
+* c-patientList
+*/
+.c-patientList {
+}
+.c-patientList__item {
+    margin-bottom: 4rem;
+}
+
+/*
+* c-localisationList
+*/
+.c-localisationList {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.c-localisationList__item {
+    .c-button {
+        width: 15rem;
+        height: 15rem;
+        justify-content: center;
+    }
+}

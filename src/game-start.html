@@ -2,22 +2,31 @@
 {% extends "templates/layout.html" %}
 
 <!-- //START page variables -->
-<!-- prettier-ignore -->
-{% set page_title = "Old scarab 3" %}
+{% set page_title = "Old Sacarab 3" %}
 {% set body_class = "" %}
+{% set content_class = "c-content--page" %}
 
-{% set header = { show: true, homeBtn: true, statsBtn: true} %}
+{% set header = { show: true, backUrl: "" } %}
 <!-- //END page variables -->
 
 <!-- //START page Content -->
 {% block page_content %}
+    <h1 class="c-title">{{ page_title }}</h1>
 
-<div class="c-content c-content--game">
-    <h1 class="c-title">{{page_title}}</h1>
+    <a href="game-injury-localisation.html" class="c-button c-button--lg c-button--primary">
+        Prise en charge du patient
+    </a>
 
-    <a href="game-injury-localisation.html" class="c-button c-button--primary">Meeeedic !</a>
-</div>
+    <p class="c-subtitle">Statistiques</p>
+    <ul class="c-list">
+        <li class="c-list__item">Patient(s) soigné(s) : <span>X</span></li>
+        <li class="c-list__item">Patient(s) décédé(s) : <span>0</span></li>
+        <li class="c-list__item">Zone la plus endommagée: <span>Thorax</span></li>
+        <li class="c-list__item">Blessure la plus courante : <span>Hémoragie</span></li>
+        <li class="c-list__item">Protection ballistique : <span>20%</span></li>
+    </ul>
 
+    <a href="game-stats.html" class="c-button c-button--primary c-button--back">Plus de stats</a>
 {% endblock %}
 
 <!-- //END page Content -->

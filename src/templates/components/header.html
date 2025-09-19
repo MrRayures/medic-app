@@ -1,22 +1,17 @@
-<header id="{{header.id}}" class="c-header {{header.class}}" role="banner">
-    <div class="c-header__content c-container">
+<header id="{{ header.id }}" class="c-header {{ header.class }}" role="banner">
+    <nav class="c-header__content">
+        <a href="index.html" class="c-header__logo">
+            <img src="assets/img/logo.svg" alt="Logo" width="45" height="45" />
+        </a>
         <nav class="c-header__nav" role="navigation" aria-label="main navigation">
             {% if header.backUrl %}
-            <a
-                href="{{header.backUrl}}"
-                class="c-button c-button--primary c-button--icon-left c-icon-arrow-left"
-            >
-                Retour
-            </a>
-            {% endif %} {% if header.homeBtn %}
-            <a href="index.html" class="c-button c-button--primary"> Accueil </a>
+                <a href="{{ header.backUrl }}" class="c-button c-button--ghost c-icon-arrow-back">
+                    <span class="c-button__content">Retour</span>
+                </a>
             {% endif %}
-            <a href="index.html" class="c-header__logo">
-                <span class="c-icon-cross c-icon--left" aria-hidden="true"></span>MEDIC
-            </a>
-            {% if header.statsBtn %}
-            <a href="game-stats.html" class="c-button c-button--primary u-ml-auto">Stats</a>
-            {% endif %}
+            <button href="game-stats.html" class="c-button c-button--ghost c-icon-menu">
+                <span class="c-button__content">Ouvrir le menu</span>
+            </button>
         </nav>
-    </div>
+    </nav>
 </header>

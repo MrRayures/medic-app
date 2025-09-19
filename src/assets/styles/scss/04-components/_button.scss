@@ -1,10 +1,11 @@
 /*
 * Button
 */
+
 .c-button {
     --btnHeight: 4rem;
-    --btnBgColor: none;
-    --btnBorderColor: transparent;
+    --btnBgColor: transparent;
+    --btnBorderColor: white;
     --btnColor: var(--text);
 
     min-height: var(--btnHeight);
@@ -12,14 +13,15 @@
     border: 1px solid var(--btnBorderColor);
     padding: 0;
     color: var(--btnColor);
-    text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 400;
+    position: relative;
 
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding: 0 2rem;
     text-decoration: none;
-    font-size: 3.2rem;
+    font-size: 1.6rem;
 
     &:not([disabled]) {
         cursor: pointer;
@@ -40,9 +42,8 @@
 * Variantes
 */
 .c-button--primary {
-    --btnBgColor: transparent;
-
-    --btnColor: var(--primary);
+    --btnBgColor: var(--primary);
+    --btnColor: black;
 
     @media (hover: hover) and (pointer: fine) {
         &:hover:not([disabled]) {
@@ -50,21 +51,35 @@
             --btnColor: var(--bg);
         }
     }
-
-    &.outline {
-        --btnBorderColor: var(--primary);
-    }
 }
 
 .c-button--secondary {
-    --btnColor: var(--secondary);
+    --btnBgColor: transparent;
+    --btnColor: var(--primary);
 
     @media (hover: hover) and (pointer: fine) {
         &:hover:not([disabled]) {
-            --btnBgColor: var(--secondary);
-            --btnColor: var(--bg);
+            --btnBgColor: var(--primary);
+            --btnColor: black;
         }
     }
+}
+
+.c-button--ghost {
+    --btnBgColor: transparent;
+    --btnColor: var(--primary);
+    --btnBorderColor: transparent;
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover:not([disabled]) {
+            --btnBgColor: var(--primary);
+            --btnColor: black;
+        }
+    }
+}
+
+.c-button--back {
+    margin-top: 3.2rem;
 }
 
 /*
@@ -77,7 +92,7 @@
     --btnHeight: 4rem;
 }
 .c-button--lg {
-    --btnHeight: 5.4rem;
+    --btnHeight: 5.6rem;
 }
 
 /*
@@ -85,18 +100,20 @@
 */
 .c-button--icon-left {
     padding-left: 1rem;
+
     &:before {
         content: '';
-        margin-right: 0.4rem;
+        margin-right: 1rem;
         display: block;
     }
 }
 
 .c-button--icon-right {
     padding-right: 1rem;
+
     &:after {
         content: '';
-        margin-left: 0.4rem;
+        margin-left: 1rem;
         display: block;
     }
 }
@@ -105,7 +122,7 @@
     padding: 0;
     height: var(--btnHeight);
     width: var(--btnHeight);
-    border-radius: var(--btnHeight);
+    //border-radius: var(--btnHeight);
 
     .c-button__content {
         clip: rect(0 0 0 0);
@@ -124,4 +141,14 @@
         flex-shrink: 0;
         transform: translateZ(0);
     }
+}
+
+/*
+* buttonGroup
+*/
+
+.c-buttonGroup {
+    display: flex;
+    gap: 3.2rem;
+    flex-wrap: wrap;
 }

@@ -1,22 +1,33 @@
-/*-----------------------------------------------------------------------------------------------------
-  [component:content]
--------------------------------------------------------------------------------------------------------*/
+/*
+* content
+*/
 
 .c-content {
-    padding: 4rem 0 0 0;
+    padding: 2rem;
 }
 
 // HP
 .c-content--hp {
-    padding: 6rem 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    flex-grow: 1;
+    gap: 4.8rem;
+
+    width: 100%;
+
+    @media (orientation: landscape) {
+        flex-direction: row;
+    }
+
+    @media (orientation: portrait) {
+        flex-direction: column;
+    }
 }
 
 // Page
 .c-content--page {
-}
-
-// Game
-.c-content--game {
-    text-align: center;
+    padding: 4rem;
+    flex-grow: 1;
 }

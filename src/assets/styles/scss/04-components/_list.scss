@@ -1,6 +1,22 @@
 /*-----------------------------------------------------------------------------------------------------
   [component:list]
 -------------------------------------------------------------------------------------------------------*/
+.c-list {
+}
+
+.c-list__item {
+    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+
+    span {
+        display: inline-block;
+        background-color: white;
+        color: black;
+        font-size: 1.6rem;
+        font-weight: 400;
+        padding: 0 0.4rem;
+    }
+}
 
 /*
 * c-buttonList
@@ -8,43 +24,22 @@
 .c-buttonList {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-}
+    gap: 2.4rem;
+    max-width: 30rem;
+    width: 100%;
 
-.c-buttonList__item {
     .c-button {
         width: 100%;
     }
 }
 
-// Center
-.c-buttonList--center {
-    align-items: center;
+.c-buttonList__item--back {
+    margin-top: 3.2rem;
 }
 
 /*
-* c-patientList
+* c-gameList
 */
-
-.c-patientList {
-}
-.c-patientList__item {
-    margin-bottom: 4rem;
-}
-
-/*
-* c-localisationList
-*/
-
-.c-localisationList {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-}
-.c-localisationList__item {
-    .c-button {
-        width: 15rem;
-        height: 15rem;
-        justify-content: center;
-    }
+.c-gameList__item {
+    margin-bottom: 2rem;
 }

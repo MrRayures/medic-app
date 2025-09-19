@@ -13,6 +13,7 @@
     },
     "scripts": {
         "clean": "recursive-delete dist",
+        "copy": "mkdirp -p dist/assets && recursive-copy src/assets/img dist/assets/img && recursive-copy src/assets/icons dist/assets/icons && recursive-copy src/assets/fonts dist/assets/fonts",
         "scss": "sass --style=compressed --error-css --update src/assets/styles/scss/app.scss dist/assets/css/app.css",
         "img": "mkdirp -p dist/assets/img && recursive-copy src/assets/img dist/assets/img",
         "icons": "mkdirp -p dist/assets/icons && recursive-copy src/assets/icons dist/assets/icons",

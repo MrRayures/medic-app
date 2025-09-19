@@ -2,44 +2,46 @@
 {% extends "templates/layout.html" %}
 
 <!-- //START page variables -->
-<!-- prettier-ignore -->
 {% set page_title = "Stats" %}
 {% set body_class = "" %}
+{% set content_class = "c-content--page" %}
 
 {% set header = { show: true, backUrl: "game-start.html" } %}
 <!-- //END page variables -->
 
 <!-- //START page Content -->
 {% block page_content %}
-<div class="c-content c-content--page">
-    <h1 class="c-title">{{page_title}}</h1>
+    <h1 class="c-title">{{ page_title }}</h1>
 
     <p class="c-subtitle">Total patients soigné: 12</p>
     <!-- prettier-ignore -->
     {% set items = [ 
-        {time: "16h43", local: "Thorax", protection: true, injury: "Hémorragie"}, 
-        {time: "17h05", local: "Tête", protection: false, injury: "Arrêt cardiaque"}, 
-        {time: "17h36", local: "Bras", protection: false, injury: "Luxation"}, 
-        {time: "18h24", local: "Jambes", protection: false, injury: "Fracture"}
+        {order: "4", id:"457604", time: "18h24", local: "Jambes", protection: false, injury: "Fracture"},
+        {order: "3", id:"457603", time: "17h36", local: "Bras", protection: false, injury: "Luxation"}, 
+        {order: "2", id:"457602", time: "17h05", local: "Tête", protection: false, injury: "Arrêt cardiaque"},
+        {order: "1", id:"457601", time: "16h43", local: "Thorax", protection: true, injury: "Hémorragie"}  
     ]%}
     <ul class="c-patientList">
         {% for item in items %}
-        <li class="c-patientList__item">
-            <div class="c-patient">
-                <h2 class="c-patient__title">#{{loop.index}} - {{item.time}}</h2>
-                <div class="c-patient__injury">
-                    <p>{{item.local}}</p>
-                    <p>
-                        Protection ballistique : {% if item.protection %} oui {% else %} non {%
-                        endif %}
-                    </p>
-                    <p>{{item.injury}}</p>
+            <li class="c-patientList__item">
+                <div class="c-patient">
+                    <span class="c-patient__order">{{ item.order }}</span>
+                    <h2 class="c-patient__title">#ID{{ item.id }} - {{ item.time }}</h2>
+                    <div class="c-patient__injury">
+                        <p>
+                            {{ item.local }}
+                            {% if item.protection %}
+                                [Protection ballistique]
+                            {% endif %}
+                        </p>
+                        <p>{{ item.injury }}</p>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
         {% endfor %}
     </ul>
-</div>
+
+    <a href="game-start.html" class="c-button c-button--primary c-button--back">Retour</a>
 {% endblock %}
 
 <!-- //END page Content -->

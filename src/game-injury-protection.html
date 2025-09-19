@@ -2,22 +2,31 @@
 {% extends "templates/layout.html" %}
 
 <!-- //START page variables -->
-<!-- prettier-ignore -->
 {% set page_title = "Protection ballistique" %}
 {% set body_class = "" %}
+{% set content_class = "c-content--page" %}
 
-{% set header = { show: true, homeBtn: true, statsBtn: true} %}
+{% set header = { show: true } %}
 <!-- //END page variables -->
 
 <!-- //START page Content -->
 {% block page_content %}
+    <h1 class="c-title">{{ page_title }}</h1>
+    <p class="u-mb-32">
+        Est-ce que le joueur dispose d’une protection balistique au niveau de la blessure ?
+    </p>
+    <ul class="c-buttonList">
+        <li class="c-buttonList__item">
+            <a href="game-injury-check.html" class="c-button c-button--primary">Oui</a>
+        </li>
+        <li class="c-buttonList__item">
+            <a href="game-injury-check.html" class="c-button c-button--secondary">Non</a>
+        </li>
+    </ul>
 
-<div class="c-content c-content--game">
-    <h1 class="c-title">{{page_title}}</h1>
-    <a href="game-injury-check.html" class="c-button c-button--primary outline">Oui</a>
-    <a href="game-injury-check.html" class="c-button c-button--primary outline">Non</a>
-</div>
-
+    <div class="c-footer">
+        <p>[nom_de_la_partie_#139751 | patient #ID19742</p>
+    </div>
 {% endblock %}
 
 <!-- //END page Content -->

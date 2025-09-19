@@ -1,0 +1,37 @@
+<!-- index.html -->
+{% extends "templates/layout.html" %}
+
+<!-- //START page variables -->
+<!-- prettier-ignore -->
+{% set page_title = "Accueil" %}
+{% set body_class = "" %}
+
+
+
+
+
+
+{% set header = { show: false } %}
+<!-- //END page variables -->
+
+<!-- //START page Content -->
+{% block page_content %}
+    <div class="c-content c-content--hp">
+        {% set logo = {class: ""} %}
+        {% include "templates/components/logo.html" %}
+
+        <ul class="c-buttonList c-buttonList--center">
+            <li class="c-buttonList__item">
+                <a class="c-button c-button--primary" href="game-add.html">Nouvelle partie</a>
+            </li>
+            <li class="c-buttonList__item">
+                <a class="c-button c-button--primary" href="game-list.html">Charger une partie</a>
+            </li>
+            <li class="c-buttonList__item">
+                <a class="c-button c-button--primary" href="app-settings.html">Options</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+<!-- //END page Content -->

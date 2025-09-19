@@ -3,11 +3,36 @@
 -------------------------------------------------------------------------------------------------------*/
 
 .c-title {
-    font-size: 6rem;
-    margin-bottom: 2rem;
+    font-size: 3.2rem;
+    margin-bottom: 3.2rem;
+
+    display: flex;
+    gap: 1.2rem;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 0.6rem;
+        background-color: white;
+    }
+
+    ~ .c-subtitle {
+        margin-top: 4.8rem;
+    }
+
+    &:has(.c-button) {
+        display: flex;
+        .c-button {
+            margin-left: auto;
+        }
+    }
 }
 
 .c-subtitle {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
+
+    ~ .c-subtitle {
+        margin-top: 4.8rem;
+    }
 }

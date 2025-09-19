@@ -14,11 +14,6 @@
     background-size: 100% 80%;
 }
 
-.test {
-    mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
-    mask-size: 100% 2px;
-}
-
 @keyframes crtAnimation {
     0% {
         background-position: 0 0;
