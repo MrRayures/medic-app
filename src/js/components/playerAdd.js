@@ -1,5 +1,5 @@
 // New component
-class PatientAdd extends HTMLElement {
+class PlayerAdd extends HTMLElement {
 
 
     constructor() {
@@ -10,9 +10,9 @@ class PatientAdd extends HTMLElement {
         let currentGameID = appData.defaultSettings.currentGame;
         let currentGame = appData.games.filter(g => g.ID === currentGameID);
 
-        // Delete patient with treatment aborted
-        currentGame[0].patients = currentGame[0].patients.filter(patient => {
-            return patient.healed === true; // keep only healed patients
+        // Delete patient not fully treated healed or dead ;)
+        currentGame[0].players = currentGame[0].players.filter(player => {
+            return player.treated === true; // keep only healed patients
         });
         // Update localStorage if needed
         localStorage.setItem("medic_data", JSON.stringify(appData));
@@ -37,27 +37,29 @@ class PatientAdd extends HTMLElement {
         let addButton = this.querySelector("#addButton");
         addButton.onclick = () => {
 
-            let patientsLenght = currentGame[0].patients.length;
-            let patientID = 0;
+            const playerDate = new Date().toISOString();
 
-            if(patientsLenght === 0) {
-                patientID = 1;
+            let playersLength = currentGame[0].players.length;
+            let playerID = 0;
+
+            if(playersLength === 0) {
+                playerID = 1;
             } else {
-                patientID = patientsLenght + 1;
+                playerID = playersLength + 1;
             }
 
             const patientData = {
-                ID: ("00" + patientID).slice(-3),
+                ID: ("00" + playerID).slice(-3),
                 name: "",
-                date: "",
+                date: playerDate,
                 localisation: "",
                 injury: "",
                 protection: false,
-                death: false,
-                healed: false
+                dead: false,
+                treated: false
             };
             
-            currentGame[0].patients.push(patientData);
+            currentGame[0].players.push(patientData);
             localStorage.setItem("medic_data", JSON.stringify(appData));
 
             //console.log(appData);
@@ -69,4 +71,4 @@ class PatientAdd extends HTMLElement {
 
 
 
-customElements.define("patient-add", PatientAdd);
+customElements.define("player-add", PlayerAdd);

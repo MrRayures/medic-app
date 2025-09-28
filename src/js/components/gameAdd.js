@@ -1,59 +1,16 @@
 // New component
 class gameAdd extends HTMLElement {
 
-     static get observedAttributes () {
-        return ['value']
-    }
-
     constructor() {
         super();
 
-        /*
-        this.form = document.createElement('form');
+        // Game infos
+        let appData = JSON.parse(localStorage.getItem("medic_data"));
+        let currentGameID = appData.defaultSettings.currentGame;
+        let currentGame = appData.games.filter(g => g.ID === currentGameID);
+        let defaultHealTime = appData.defaultSettings.healTime;
 
 
-        // Field game_name
-        this.field_name = document.createElement('div');
-        this.field_name.classList.add('c-field');
-
-        this.input_name = document.createElement('input');
-        this.input_name.classList.add('c-input');
-        this.input_name.setAttribute("id", "game_name");
-
-
-        //Button group
-
-        // Button Save
-        this.button_save = document.createElement('button');
-        this.button_save.innerHTML = "Créer la partie";
-        this.button_save.classList.add('c-button', 'c-button--primary');
-        this.button_save.setAttribute("id", "save_button");
-        this.button_save.setAttribute("type", "button");
-
-        // Button Save
-        this.button_save = document.createElement('button');
-        this.button_save.innerHTML = "Créer la partie";
-        this.button_save.classList.add('c-button', 'c-button--primary');
-        this.button_save.setAttribute("id", "save_button");
-        this.button_save.setAttribute("type", "button");
-        
-
-
-        this.appendChild(this.form);
-        this.form.appendChild(this.field_name);
-        this.field_name.appendChild(this.input_name);
-
-
-        this.form.appendChild(this.button_save);
-
-        const saveButton = document.getElementById('save_button');
-        saveButton.onclick = () => {
-            console.log(document.getElementById("game_name").value);
-            //saveGameData(gameName);
-        };
-        */
-
-        
         this.innerHTML = `
             <form class="c-form" action="/">
                 <div class="c-field">
@@ -74,19 +31,18 @@ class gameAdd extends HTMLElement {
 
                 <div class="c-field">
                     <div class="c-field__wrapper">
-                        <label class="c-label" for="game_healing_timing">Temps de soin moyen</label>
-                        <input class="c-input" value="" type="number" step="1" min="0" id="game_healing_timing" />
+                        <label class="c-label" for="game_healing_timing">Temps de soin moyen (<i>en seconde</i>)</label>
+                        <input class="c-input" value="${defaultHealTime}" type="number" step="1" min="0" id="game_healing_timing" />
                     </div>
                     <p class="c-label__hint">
-                        En seconde et par defaut de 30s. <br />
-                        Cela affectera le temp de diagnostique afin de rallonger ou écourter le soin selon
-                        la valeur choisie.
+                        Par defaut de 30s.<br />
+                        Cela affectera les temps de diagnostique et de soins afin de se rapprocher au maximum de la valeur choisie.
                     </p>
                 </div>
 
-                <div class="c-field c-field--radio ">
+                <div class="c-field c-field--checkbox ">
                     <div class="c-field__wrapper">
-                        <input class="c-radio" value="" type="radio" id="game_death" />
+                        <input class="c-checkbox" value="" type="checkbox" id="game_death" />
                         <label class="c-label" for="game_death">Mort active ?</label>
                     </div>
                     <p class="c-label__hint">Active le risque de décéder d'une blessure grave<br /></p>
@@ -117,7 +73,6 @@ class gameAdd extends HTMLElement {
         
 
         function saveGameData(id, name, date, location, healing, death) {
-            let appData = JSON.parse(localStorage.getItem("medic_data"));
 
             // Simple validation
             if (!name || name.trim() === "") {
@@ -135,7 +90,7 @@ class gameAdd extends HTMLElement {
                     death: death,
                     healTime: healing
                 },
-                patients: []
+                players: []
             };
 
             //console.log(gameData);

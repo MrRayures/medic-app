@@ -3,7 +3,6 @@ class GameList extends HTMLElement {
     constructor() {
         super();
 
-
         function formatDate(dateString) {
             const date = new Date(dateString);
 
@@ -22,31 +21,6 @@ class GameList extends HTMLElement {
         this.appendChild(this.list);
 
         
-
-        //console.log(appData);
-
-        /*const rawData = localStorage.getItem("medic_data"); // <-- replace "myData" with your key
-            if (!rawData) {
-                console.error("No data found in localStorage");
-            } else {
-            // Parse JSON
-            const data = JSON.parse(rawData);
-
-                // Loop through games
-                data.games.forEach(game => {
-                    console.log("Game:", game.name, "| Location:", game.localisation);
-
-                    // Loop through patients inside each game
-                    game.patients.forEach(patient => {
-                    console.log(
-                        "  Patient:", patient.ID,
-                        "| Injury:", patient.injury,
-                        "| Location:", patient.localisation
-                    );
-                });
-            });
-        }*/
-
         if (appData.games.length  === 0) {
             this.listItem = document.createElement('li');
             this.listItem.classList.add('c-gameList__item');
@@ -57,8 +31,6 @@ class GameList extends HTMLElement {
             this.list.appendChild(this.listItem);
         } else {
             appData.games.forEach(game => {
-                //console.log("Game:", game.name, "| Location:", game.localisation);
-
                 this.listItem = document.createElement('li');
                 this.listItem.classList.add('c-gameList__item');
 
@@ -71,7 +43,8 @@ class GameList extends HTMLElement {
                 let gameLocation = game.location;
                 let gameDeath = game.settings.death;
                 let gameHealTime = game.settings.healTime;
-                let gamePatients = game.patients.length;
+                let gamePlayers = game.players.length;
+
 
                 if(gameLocation != "") {
                     gameLocation = `à ${gameLocation}`;
@@ -85,6 +58,7 @@ class GameList extends HTMLElement {
 
                 if(gameHealTime === "") {
                     gameHealTime = appData.defaultSettings.healTime;
+                    
                 }
 
                 if (game.ID === currentGameID) {
@@ -95,7 +69,7 @@ class GameList extends HTMLElement {
                                 <p>${formatDate(gameDate)} ${gameLocation}</p>
                                 <p>Mort active: ${gameDeath}</p>
                                 <p>Temps de soin: ${gameHealTime}</p>
-                                <p>Patients : ${gamePatients}</p>
+                                <p>Patients : ${gamePlayers}</p>
                             </div>
                             <form action="/load-game">
                                 <p class="c-button c-button--ghost">Partie chargé</p>     
@@ -111,7 +85,7 @@ class GameList extends HTMLElement {
                                 <p>${formatDate(gameDate)} ${gameLocation}</p>
                                 <p>Mort active: ${gameDeath}</p>
                                 <p>Temps de soin: ${gameHealTime}</p>
-                                <p>Patients : ${gamePatients}</p>
+                                <p>Patients : ${gamePlayers}</p>
                             </div>
                             <form action="/load-game">  
                                 <button data-id="${gameID}" data-load type="submit" class="c-button c-button--secondary">Charger</button>
@@ -133,6 +107,8 @@ class GameList extends HTMLElement {
 
                     appData.defaultSettings.currentGame = gameID;
                     localStorage.setItem("medic_data", JSON.stringify(appData));
+                    
+                    document.location.href="/game";
                 };
             });
             

@@ -3,12 +3,10 @@ class appMenu extends HTMLElement {
     constructor() {
         super();
 
+        // Game infos
         let appData = JSON.parse(localStorage.getItem("medic_data"));
         let currentGameID = appData.defaultSettings.currentGame;
         let currentGame = appData.games.filter(g => g.ID === currentGameID);
-
-        //let test = appData.games.filter();
-        console.log();
 
         if (currentGameID === null) {
             this.innerHTML = /*html*/`
@@ -54,11 +52,6 @@ class appMenu extends HTMLElement {
         }
 
         
-        
-    }
-
-
-    connectedCallback() {
         
     }
 }

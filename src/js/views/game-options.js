@@ -1,6 +1,5 @@
 import "../components/navbar.js";
-import "../components/gameFooter.js";
-import "../components/injuryLocalisation.js";
+import "../components/gameOptions.js";
 
 // Display infos
 let appData = JSON.parse(localStorage.getItem("medic_data"));
@@ -9,12 +8,10 @@ let currentGame = appData.games.filter(g => g.ID === currentGameID);
 
 export default () => /*html*/`
     <nav-bar></nav-bar>
-    
     <div class="c-content c-content--page">
-        <h1 class="c-title">Localisation de la blessure</h1>
+        <h1 class="c-title">Options: ${currentGame[0].name}</h1>
 
-        <injury-localisation></injury-localisation>
+        <game-options></game-options>
 
-        <game-footer></game-footer>
     </div>
 `;
