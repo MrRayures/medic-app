@@ -16,6 +16,7 @@ self.addEventListener('install', event => {
         '/index.html',
         '/src/assets/css/app.css',
         '/src/js/router.js',
+        '/src/js/data.js',
         '/src/js/utils.js',
         '/images/logo.png'
       ]);

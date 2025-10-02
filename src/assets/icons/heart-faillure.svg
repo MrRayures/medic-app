@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <g transform="matrix(1,0,0,1,-4,-4)">
+        <g transform="matrix(2.33333,0,0,2.33333,32,32)">
+            <g id="heart-faillure">
+                <g transform="matrix(1,0,0,1,-12,-12)">
+                    <path d="M13.508,20.313C13.128,20.749 12.578,21 12,21C11.43,21 10.887,20.757 10.508,20.332L5,15C3.5,13.5 2,11.8 2,9.5C2,9.5 2,9.499 2,9.499C2,6.482 4.483,3.999 7.5,3.999C9.06,3.999 10.548,4.663 11.591,5.823C11.82,6.037 12.18,6.037 12.409,5.824C13.452,4.664 14.94,4 16.5,4C19.517,4 22,6.483 22,9.5C22,11.79 20.5,13.5 19,15L13.508,20.313Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+                    <g transform="matrix(0.393798,0,0,0.393798,4.84806,7.27442)">
+                        <path d="M34.062,12L19.52,12C18.625,11.998 17.832,12.598 17.59,13.46L15.24,21.82C15.209,21.926 15.111,22 15,22C14.889,22 14.791,21.926 14.76,21.82L9.24,2.18C9.209,2.074 9.111,2 9,2C8.889,2 8.791,2.074 8.76,2.18L6.41,10.54C6.169,11.399 5.382,11.997 4.49,12L2,12" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:4.13px;"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

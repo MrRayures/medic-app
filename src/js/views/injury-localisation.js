@@ -5,7 +5,7 @@ import "../components/injuryLocalisation.js";
 // Display infos
 let appData = JSON.parse(localStorage.getItem("medic_data"));
 let currentGameID = appData.defaultSettings.currentGame;
-let currentGame = appData.games.filter(g => g.ID === currentGameID);
+let currentGame = appData.games.filter(g => g.id === currentGameID);
 
 export default () => /*html*/`
     <nav-bar></nav-bar>

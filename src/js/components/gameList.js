@@ -1,18 +1,14 @@
+import {formatDate} from '../utils.js';
+import {currentGameId} from '../utils.js';
+
+
+
 // New component
 class GameList extends HTMLElement {
     constructor() {
         super();
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0'); // months start at 0
-            const year = date.getFullYear();
-
-            return `${day}/${month}/${year}`;
-        }
-
+        // Game infos
         let appData = JSON.parse(localStorage.getItem("medic_data"));
 
         this.list = document.createElement('ul');
@@ -25,8 +21,10 @@ class GameList extends HTMLElement {
             this.listItem = document.createElement('li');
             this.listItem.classList.add('c-gameList__item');
             this.listItem.innerHTML = `
-                <p class="u-mb-16">Aucune partie</p>   
-                <a href="/new-game" class="c-button c-button--secondary">Créer une partie</a>
+                <div class="c-block">
+                    <p class="u-mb-16">Aucune partie</p>   
+                    <a data-link href="/new-game" class="c-button c-button--secondary">Créer une partie</a>
+                </div>
             `;
             this.list.appendChild(this.listItem);
         } else {
@@ -35,9 +33,9 @@ class GameList extends HTMLElement {
                 this.listItem.classList.add('c-gameList__item');
 
                 // Display infos
-                let currentGameID = appData.defaultSettings.currentGame;
+                let currentGameID = currentGameId();
 
-                let gameID = game.ID;
+                let gameID = game.id;
                 let gameName = game.name;
                 let gameDate = game.date;
                 let gameLocation = game.location;
@@ -61,9 +59,9 @@ class GameList extends HTMLElement {
                     
                 }
 
-                if (game.ID === currentGameID) {
+                if (game.id === currentGameID) {
                     this.listItem.innerHTML = `
-                        <div id="${gameID}" class="c-gameCard">
+                        <div id="${gameID}" class="c-gameCard c-gameCard--loaded">
                             <div class="c-gameCard__infos">
                                 <h2 class="c-gameCard__title">${gameName}</h2>
                                 <p>${formatDate(gameDate)} ${gameLocation}</p>
@@ -71,10 +69,10 @@ class GameList extends HTMLElement {
                                 <p>Temps de soin: ${gameHealTime}</p>
                                 <p>Patients : ${gamePlayers}</p>
                             </div>
-                            <form action="/load-game">
-                                <p class="c-button c-button--ghost">Partie chargé</p>     
-                                <button data-id="${gameID}" data-delete type="submit" class="c-button c-button--ghost c-icon-delete"><span class="c-button__content">Supprimer</span></button>
-                            </form>
+                            <div class="c-gameCard__actions">
+                                <p><span class="c-icon-check c-icon--left"></span> Partie chargé</p>    
+                                <button data-id="${gameID}" data-delete type="submit" class="c-button c-button--sm c-button--secondary c-button--icon-left c-icon-trash"><span class="c-button__content">Supprimer</span></button>
+                            </div>
                         </div>
                     `;
                 } else {
@@ -87,10 +85,10 @@ class GameList extends HTMLElement {
                                 <p>Temps de soin: ${gameHealTime}</p>
                                 <p>Patients : ${gamePlayers}</p>
                             </div>
-                            <form action="/load-game">  
-                                <button data-id="${gameID}" data-load type="submit" class="c-button c-button--secondary">Charger</button>
-                                <button data-id="${gameID}" data-delete type="submit" class="c-button c-button--ghost c-icon-delete"><span class="c-button__content">Supprimer</span></button>
-                            </form>
+                            <div class="c-gameCard__actions">  
+                                <button data-id="${gameID}" data-load type="submit" class="c-button c-button--secondary c-button--icon-left c-icon-upload">Charger</button>
+                                <button data-id="${gameID}" data-delete type="submit" class="c-button c-button--sm c-button--secondary c-button--icon-left c-icon-trash"><span class="c-button__content">Supprimer</span></button>
+                            </div>
                         </div>
                     `;
                 }
@@ -113,17 +111,22 @@ class GameList extends HTMLElement {
             });
             
 
-            // delete game
+            // Delete game
             let deletButton = this.querySelectorAll("[data-delete]");
             deletButton.forEach((el) => {
                 el.onclick = () => {
                     let gameID = el.getAttribute("data-id");
                     
-                    appData.games = appData.games.filter(g => g.ID !== gameID);
+                    // Remove from medic_data
+                    appData.games = appData.games.filter(g => g.id !== gameID);
 
+                    // Remove currentGame 
                     if (appData.defaultSettings.currentGame === gameID) {
                         appData.defaultSettings.currentGame = null;
                     }
+
+                    // Delete listItem
+                    document.getElementById(gameID).parentElement.remove();
 
                     localStorage.setItem("medic_data", JSON.stringify(appData));
 

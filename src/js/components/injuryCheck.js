@@ -10,16 +10,16 @@ class InjuryCheck extends HTMLElement {
         // Game infos
         let appData = JSON.parse(localStorage.getItem("medic_data"));
         let currentGameID = appData.defaultSettings.currentGame;
-        let currentGame = appData.games.filter(g => g.ID === currentGameID);
+        let currentGame = appData.games.filter(g => g.id === currentGameID);
 
         // Current player data
         const currentPlayer = currentGame[0].players[currentGame[0].players.length - 1];
-        let playerData = currentGame[0].players.filter(p => p.ID === currentPlayer.ID);
+        let playerData = currentGame[0].players.filter(p => p.id === currentPlayer.id);
         
 
         let playerProtection = playerData[0].protection;
         let injuryLocalisation = playerData[0].localisation;
-        let injuryLocalisationName = appData.localisation.filter(i => i.ID === playerData[0].localisation);
+        let injuryLocalisationName = appData.localisation.filter(i => i.id === playerData[0].localisation);
 
         if(playerProtection === true) {
             playerProtection = "Oui";
@@ -27,8 +27,9 @@ class InjuryCheck extends HTMLElement {
             playerProtection = "Non";
         }
 
+        // Rand an injury
         function getInjury() {
-            let injuryList = appData.localisation.filter(l => l.ID === injuryLocalisation);
+            let injuryList = appData.localisation.filter(l => l.id === injuryLocalisation);
             let playerInjuryList;
 
             if(playerData[0].protection === true) {
@@ -45,7 +46,7 @@ class InjuryCheck extends HTMLElement {
             if(currentGame[0].settings.death != true) {
                 document.location.href="/injury-treat";
             } else {
-                let injuryDeath = appData.injury.filter(i => i.ID === playerInjury);
+                let injuryDeath = appData.injury.filter(i => i.id === playerInjury);
                 //console.log('Mort active');
                 //console.log(playerInjury);
                 if(injuryDeath[0].death != true) {
@@ -68,18 +69,20 @@ class InjuryCheck extends HTMLElement {
         }
 
         this.innerHTML = `
-            <form action="/injury-check">   
-                <ul class="c-list c-list--corner u-mb-32">
-                    <li class="c-list__item">Zone blessé : <span>${injuryLocalisationName[0].name}</span></li>
-                    <li class="c-list__item">Protection ballistique : <span>${playerProtection}</span></li>
-                </ul>
+            
+            <div class="c-diagnostic u-mb-32">
+                <div id="progress" class="c-diagnostic__progress" style=""></div>
+                <div id="progress_msg" class="c-diagnostic__text">Merci de patienter...</div>
+                <p id="progress_percent" class="c-diagnostic__percent"></p>
+            </div>
 
-                <div class="c-diagnostic u-mb-32">
-                    <div id="progress" class="c-diagnostic__progress" style=""></div>
-                    <div id="progress_msg" class="c-diagnostic__text">Merci de patienter...</div>
-                    <p id="progress_percent" class="c-diagnostic__percent"></p>
-                </div>
-            </form>
+            <ul class="c-list c-list--corner u-mt-32">
+                <li class="c-list__item">Zone blessé : <span>${injuryLocalisationName[0].name}</span></li>
+                <li class="c-list__item">Protection ballistique : <span>${playerProtection}</span></li>
+            </ul>
+            
+            <a data-link href="/injury-treat" hidden>Continuer</a>
+            <a data-link href="/player-dead" hidden>Perdu !</a>
         `;
 
         /*

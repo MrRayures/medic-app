@@ -1,32 +1,20 @@
+import {formatDate} from '../utils.js';
+import {formatTime} from '../utils.js';
+import {gameData} from '../utils.js';
+
 // New component
 class GameStats extends HTMLElement {
 
     constructor() {
         super();
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0'); // months start at 0
-            const year = date.getFullYear();
-
-            return `${day}/${month}/${year}`;
-        }
-
-        function formatTime(dateString) {
-            const date = new Date(dateString);
-
-            const hours = String(date.getUTCHours()).padStart(2, "0");
-            const minutes = String(date.getUTCMinutes()).padStart(2, "0");
-
-            return `${hours}h${minutes}`;
-        }
-
         // Game infos
         let appData = JSON.parse(localStorage.getItem("medic_data"));
         let currentGameID = appData.defaultSettings.currentGame;
-        let currentGame = appData.games.filter(g => g.ID === currentGameID);
+        let currentGame = appData.games.filter(g => g.id === currentGameID);
+
+        console.log(currentGame[0]);
+        console.log(gameData());
 
         // Current player data
         let playerTotal = currentGame[0].players.length;
@@ -96,7 +84,7 @@ class GameStats extends HTMLElement {
             this.listItem = document.createElement('li');
             this.listItem.classList.add('c-patientList__item');
 
-            let playerID = player.ID;
+            let playerID = player.id;
             let playerName = player.name;
             let playerDate = formatDate(player.date);
             let playerTime= formatTime(player.date);

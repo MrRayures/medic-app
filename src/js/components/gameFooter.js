@@ -6,7 +6,7 @@ class GameFooter extends HTMLElement {
         // Game infos
         let appData = JSON.parse(localStorage.getItem("medic_data"));
         let currentGameID = appData.defaultSettings.currentGame;
-        let currentGame = appData.games.filter(g => g.ID === currentGameID);
+        let currentGame = appData.games.filter(g => g.id === currentGameID);
 
         let playersLenght = currentGame[0].players.length;
         let playersID = "";
@@ -14,7 +14,7 @@ class GameFooter extends HTMLElement {
         if(playersLenght != 0) {
             const currentPlayer = currentGame[0].players[currentGame[0].players.length - 1];
             if(currentPlayer.treated != true) {
-                playersID = `// Joueur #${currentPlayer.ID}`
+                playersID = `// Joueur #${currentPlayer.id}`
             }
         } 
 

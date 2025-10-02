@@ -8,7 +8,7 @@ class PlayerAdd extends HTMLElement {
         // Game infos
         let appData = JSON.parse(localStorage.getItem("medic_data"));
         let currentGameID = appData.defaultSettings.currentGame;
-        let currentGame = appData.games.filter(g => g.ID === currentGameID);
+        let currentGame = appData.games.filter(g => g.id === currentGameID);
 
         // Delete patient not fully treated healed or dead ;)
         currentGame[0].players = currentGame[0].players.filter(player => {
@@ -22,16 +22,14 @@ class PlayerAdd extends HTMLElement {
         if (this.hasAttribute("data-label")) {
             this.label = this.getAttribute("data-label");
         } else {
-            this.label = "Nouveau patient";
+            this.label = "Nouveau joueur";
         }
         
         
         this.innerHTML = /*html*/`
-            <form action="/injury-localisation">
-                <button id="addButton" type="submit" class="c-button c-button--lg c-button--primary c-button--sticky">
-                    ${this.label}
-                </button>
-            </form>
+            <a data-link href="/injury-localisation" id="addButton" class="c-button c-button--lg c-button--primary c-button--icon-left c-icon-shield-plus">
+                ${this.label}
+            </a>
         `;
 
         let addButton = this.querySelector("#addButton");
@@ -49,7 +47,7 @@ class PlayerAdd extends HTMLElement {
             }
 
             const patientData = {
-                ID: ("00" + playerID).slice(-3),
+                id: ("00" + playerID).slice(-3),
                 name: "",
                 date: playerDate,
                 localisation: "",

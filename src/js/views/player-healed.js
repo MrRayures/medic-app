@@ -5,7 +5,7 @@ import "../components/playerStats.js";
 // Display infos
 let appData = JSON.parse(localStorage.getItem("medic_data"));
 let currentGameID = appData.defaultSettings.currentGame;
-let currentGame = appData.games.filter(g => g.ID === currentGameID);
+let currentGame = appData.games.filter(g => g.id === currentGameID);
 
 export default () => /*html*/`
     <nav-bar></nav-bar>
@@ -14,9 +14,9 @@ export default () => /*html*/`
 
         <player-stats></player-stats>
         
-        <player-add data-label="Nouveau joueur"></player-add>
-        
-        <a data-link href="/game" class="c-button c-button--primary c-button--icon-left c-icon-arrow-back c-button--back">Retour à l'accueil</a>
-        
+        <div class="c-buttonGroup u-mt-32">
+            <player-add data-label="Nouveau joueur"></player-add>
+            <a data-link href="/game" class="c-button c-button--secondary c-button--icon-left c-icon-arrow-left">Retour à l'accueil</a>
+        </div>
     </div>
 `;

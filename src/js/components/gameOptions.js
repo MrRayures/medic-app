@@ -6,7 +6,7 @@ class GameOptions extends HTMLElement {
         // Game infos
         let appData = JSON.parse(localStorage.getItem("medic_data"));
         let currentGameID = appData.defaultSettings.currentGame;
-        let currentGame = appData.games.filter(g => g.ID === currentGameID);
+        let currentGame = appData.games.filter(g => g.id === currentGameID);
         
         let gameName = currentGame[0].name;
         let gameLocation = currentGame[0].location;
@@ -20,7 +20,7 @@ class GameOptions extends HTMLElement {
         }
 
         this.innerHTML = /*html*/`
-            <form class="c-form" action="/game">
+            <form class="c-form" data-form class="c-form" action="/game">
                 <div class="c-field">
                     <div class="c-field__wrapper">
                         <label class="c-label" for="game_location"> Lieu </label>

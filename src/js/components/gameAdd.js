@@ -7,12 +7,12 @@ class gameAdd extends HTMLElement {
         // Game infos
         let appData = JSON.parse(localStorage.getItem("medic_data"));
         let currentGameID = appData.defaultSettings.currentGame;
-        let currentGame = appData.games.filter(g => g.ID === currentGameID);
+        let currentGame = appData.games.filter(g => g.id === currentGameID);
         let defaultHealTime = appData.defaultSettings.healTime;
 
 
         this.innerHTML = `
-            <form class="c-form" action="/">
+            <form class="c-form" data-form action="/game">
                 <div class="c-field">
                     <div class="c-field__wrapper">
                         <label class="c-label" for="game_name">
@@ -82,7 +82,7 @@ class gameAdd extends HTMLElement {
 
             // Store data in localStorage
             const gameData = {
-                ID: id,
+                id: id,
                 name: name.trim(),
                 date: date,
                 location: location.trim(),
@@ -101,7 +101,7 @@ class gameAdd extends HTMLElement {
 
             //console.log(appData);
 
-            return true;
+            //return true;
 
         }
 
