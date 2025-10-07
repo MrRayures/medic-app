@@ -19,25 +19,25 @@ class InjuryLocalisation extends HTMLElement {
                 
                 <ul class="c-injuryArea__grid">
                     <li class="c-injuryArea__gridItem head">
-                        <a data-link href="/injury-protection" data-localisation="head" class="c-button c-button--primary outline">Tête</a>
+                        <button type="button" data-localisation="head" class="c-button c-button--primary outline">Tête</button>
                     </li>
                     <li class="c-injuryArea__gridItem left_arm">
-                        <a data-link href="/injury-protection" data-localisation="left_arm" class="c-button c-button--primary outline">Bras gauche</a>
+                        <button type="button" data-localisation="left_arm" class="c-button c-button--primary outline">Bras gauche</button>
                     </li>
                     <li class="c-injuryArea__gridItem thorax">
-                        <a data-link href="/injury-protection" data-localisation="thorax" class="c-button c-button--primary outline">Thorax</a>
+                        <button type="button" data-localisation="thorax" class="c-button c-button--primary outline">Thorax</button>
                     </li>
                     <li class="c-injuryArea__gridItem right_arm">
-                        <a data-link href="/injury-protection" data-localisation="right_arm" class="c-button c-button--primary outline">Bras droit</a>
+                        <button type="button" data-localisation="right_arm" class="c-button c-button--primary outline">Bras droit</button>
                     </li>
                     <li class="c-injuryArea__gridItem left_leg">
-                        <a data-link href="/injury-protection" data-localisation="left_leg" class="c-button c-button--primary outline">Jambe gauche</a>
+                        <button type="button" data-localisation="left_leg" class="c-button c-button--primary outline">Jambe gauche</button>
                     </li>
                     <li class="c-injuryArea__gridItem pelvis">
-                        <a data-link href="/injury-protection" data-localisation="pelvis" class="c-button c-button--primary outline">Pelvis</a>
+                        <button type="button" data-localisation="pelvis" class="c-button c-button--primary outline">Pelvis</button>
                     </li>
                     <li class="c-injuryArea__gridItem right_leg">
-                        <a data-link href="/injury-protection" data-localisation="right_leg" class="c-button c-button--primary outline">Jambe droite</a>
+                        <button type="button" data-localisation="right_leg" class="c-button c-button--primary outline">Jambe droite</button>
                     </li>
                 
                 </ul>
@@ -53,10 +53,24 @@ class InjuryLocalisation extends HTMLElement {
                     alt=""
                 />
             </div>
+
+            <dialog class="c-dialog" id="alertDialog">
+                <button
+                    type="button"
+                    id="closeModal"
+                    class="c-button c-button--ghost c-button--sm c-icon-cross c-dialog__close"
+                >
+                    <span class="c-button__content">Fermer la modal</span>
+                </button>
+                <h2 class="c-dialog__title">Protection ballistique</h2>
+                <p>Est-ce que le joueur dispose d’une protection balistique au niveau de la blessure ?</p>
+                <div class="c-buttonGroup">
+                    <a data-link href="/injury-check" data-protection="true" type="submit" class="c-button c-button--secondary">Oui</a>
+                    <a data-link href="/injury-check" data-protection="false" type="submit" class="c-button c-button--secondary">Non</a>
+                </div>
+            </dialog>
             
         `;
-
-
 
         // set localisation
         let localisationButton = this.querySelectorAll("[data-localisation]");
@@ -67,6 +81,31 @@ class InjuryLocalisation extends HTMLElement {
                 localStorage.setItem("medic_data", JSON.stringify(appData));
             };
         });
+
+        // Set protection
+        let protectionButton = this.querySelectorAll("[data-protection]");
+        protectionButton.forEach((el) => {
+            el.onclick = () => {
+                let playerProtection = el.getAttribute("data-protection") === "true";
+                playerData[0].protection = playerProtection;
+                localStorage.setItem("medic_data", JSON.stringify(appData));
+            };
+        });
+
+        // modal
+        let localisationButtons = document.querySelectorAll('.c-injuryArea__gridItem .c-button');
+        let closeModal = document.querySelector('#closeModal');
+        const alertDialog = document.getElementById('alertDialog');
+
+        localisationButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                alertDialog.showModal();
+            });
+        });
+
+        closeModal.onclick = () => {
+            alertDialog.close();
+        };
         
 
         

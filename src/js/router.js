@@ -8,6 +8,7 @@ import gameStats from "./views/game-stats.js";
 import injuryLocalisation from "./views/injury-localisation.js";
 import injuryProtection from "./views/injury-protection.js";
 import injuryCheck from "./views/injury-check.js";
+import injuryInfo from "./views/injury-info.js";
 import injuryTreat from "./views/injury-treat.js";
 import playerHealed from "./views/player-healed.js";
 import playerDead from "./views/player-dead.js";
@@ -23,7 +24,8 @@ const routes = {
     "/game-options": { title: "Options de la partie", render: gameOptions },
     "/game-stats": { title: "Stats de la partie", render: gameStats },
     "/injury-localisation": { title: "Localisation de la blessure", render: injuryLocalisation },
-    "/injury-protection": { title: "Protection ballistique", render: injuryProtection },
+    //"/injury-protection": { title: "Protection ballistique", render: injuryProtection },
+    "/injury-info": { title: "Diagnostique en cours...", render: injuryInfo },
     "/injury-check": { title: "Diagnostique en cours...", render: injuryCheck },
     "/injury-treat": { title: "Soigner le joueur !", render: injuryTreat },
     "/player-healed": { title: "Joueur soigné !", render: playerHealed },

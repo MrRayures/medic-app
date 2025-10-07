@@ -74,7 +74,7 @@ class appOptions extends HTMLElement {
         installBtn.style.display = "none";
 
         window.addEventListener("beforeinstallprompt", (e) => {
-            console.log('test')
+
             // Prevent Chrome 67 and earlier from automatically showing the prompt
             e.preventDefault();
             

@@ -15,46 +15,51 @@ class InjuryTreat extends HTMLElement {
         let playerInjury = playerData[0].injury;
         let playerInjuryName = appData.injury.filter(i => i.id === playerData[0].injury);
 
-        // Set injury
-        this.injuryDiv = document.createElement('div');
-        this.injuryDiv.classList.add('c-injury', 'u-mb-32');
-        this.injuryDiv.innerHTML = `
-            <div class="c-blockIcon u-mb-32">
-                <div class="c-blockIcon__icon">
-                    <span class="c-icon-${playerInjuryName[0].id} c-icon--left"></span>
-                </div>
-                <div class="c-blockIcon__content">
-                    <p class="u-font-12">Le patient soufre d'une :</p>
-                    <p class="u-font-48 u-font-700 u-text-uppercase u-line-height-xs">${playerInjuryName[0].name}</p>
-                </div>
-            </div>
-        `;
-        this.appendChild(this.injuryDiv);
-
-
+  
         // Injury treat
         this.injuryTreat = document.createElement('div');
         this.injuryTreat.classList.add('c-injuryTreat');
 
+        let injuryList = appData.injury.filter(i => i.id === playerInjury);
+
+
+        //Injury header step
+        this.injuryHeaderSteps = document.createElement('div');
+        this.injuryHeaderSteps.classList.add('c-injuryTreat__steps');
+        this.injuryTreat.appendChild(this.injuryHeaderSteps);
+        injuryList[0].steps.forEach((step, index) => {
+            let count = index + 1;
+
+            this.stepItem = document.createElement('div');
+            this.stepItem.classList.add('c-injuryTreat__step');
+
+            this.stepItem.innerHTML = `
+                <span class="c-injuryTreat__number">${count}</span>
+            `;
+            this.injuryHeaderSteps.appendChild(this.stepItem);
+        });
+
+        // Injury list
         this.stepList = document.createElement('ul');
         this.stepList.classList.add('c-injuryTreat__list');
 
         this.injuryTreat.appendChild(this.stepList);
         this.appendChild(this.injuryTreat);
 
-        let injuryList = appData.injury.filter(i => i.id === playerInjury);
+        
         injuryList[0].steps.forEach((step, index) => {
 
             let count = index + 1;
 
             this.listItem = document.createElement('li');
             this.listItem.classList.add('c-injuryTreat__listItem');
+            this.listItem.setAttribute('data-item', count);
 
             let button;
             if (index === injuryList[0].steps.length - 1){ 
-                button = `<button type="button" class="c-button c-button--primary c-injuryTreat__button" disabled>Terminer</button>`;
+                button = `<button data-next="${count + 1}" type="button" class="c-button c-button--primary c-injuryTreat__button" disabled>Terminer</button>`;
             } else {
-                button = `<button type="button" class="c-button c-button--primary c-injuryTreat__button" disabled>Etape suivante</button>`;
+                button = `<button data-next="${count + 1}" type="button" class="c-button c-button--primary c-injuryTreat__button" disabled>Etape suivante</button>`;
             }
 
             this.listItem.innerHTML = `
@@ -80,9 +85,11 @@ class InjuryTreat extends HTMLElement {
         /*
          * Treat injury
          */
+        const headerSteps = document.querySelectorAll('.c-injuryTreat__step');
         const treatSteps = document.querySelectorAll('.c-injuryTreat__listItem');
 
         // Active first step
+        headerSteps[0].classList.add('active');
         treatSteps[0].classList.add('active');
         startProgress(treatSteps[0], gameTreatStepHealTime);
 
@@ -91,15 +98,23 @@ class InjuryTreat extends HTMLElement {
 
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
-                const parentStep = button.closest('.c-injuryTreat__listItem');
+                let parentStep = button.closest('.c-injuryTreat__listItem');
 
                 if (parentStep && parentStep.classList.contains('active')) {
-                    const nextStep = parentStep.nextElementSibling;
+                    let nextIndex = button.getAttribute('data-next');
+                    let nextStep = document.querySelector('[data-item="' + nextIndex + '"]');
 
                     if (nextStep && nextStep.classList.contains('c-injuryTreat__listItem')) {
                         parentStep.classList.remove('active');
                         parentStep.classList.add('done');
                         nextStep.classList.add('active');
+
+                        headerSteps[nextIndex - 2].classList.remove('active');
+                        headerSteps[nextIndex - 2].classList.add('done');
+                        headerSteps[nextIndex - 1].classList.add('active');
+
+                        console.log();
+
                         startProgress(nextStep, gameTreatStepHealTime);
                     } else {
                         playerData[0].treated = true;

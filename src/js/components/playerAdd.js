@@ -1,7 +1,5 @@
 // New component
 class PlayerAdd extends HTMLElement {
-
-
     constructor() {
         super();
 
@@ -22,12 +20,12 @@ class PlayerAdd extends HTMLElement {
         if (this.hasAttribute("data-label")) {
             this.label = this.getAttribute("data-label");
         } else {
-            this.label = "Nouveau joueur";
+            this.label = "Soigner le joueur";
         }
         
         
         this.innerHTML = /*html*/`
-            <a data-link href="/injury-localisation" id="addButton" class="c-button c-button--lg c-button--primary c-button--icon-left c-icon-shield-plus">
+            <a data-link href="/injury-localisation" id="addButton" class="c-button c-button--lg c-button--primary">
                 ${this.label}
             </a>
         `;

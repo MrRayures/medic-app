@@ -19,6 +19,12 @@ class Navbar extends HTMLElement {
                 </a>
                 <div class="c-loader" id="loader"hidden><div class="c-loader__spinner"></div></div>
                 <nav class="c-header__nav" role="navigation" aria-label="main navigation">
+                    <a data-link href="/game-options" class="c-button --sm c-button--ghost c-icon-settings">
+                        <span class="c-button__content">Paramètres</span>
+                    </a>
+                    <a data-link href="/game-stats" class="c-button c-button--sm c-button--ghost c-icon-chart-pie">
+                        <span class="c-button__content">Stats</span>
+                    </a>
                     <button
                         id="openMenu"
                         type="button"
@@ -38,7 +44,7 @@ class Navbar extends HTMLElement {
         this.menu.innerHTML = `
             <div class="c-menu__content">
                 <ul class="c-menu__list">
-                    <li><a data-link href="/game" class="c-button c-button--secondary">Retour à l'accueil</a></li>
+                    <li><a data-link href="/game" class="c-button c-button--secondary">Annuler le soin</a></li>
                     <li><a data-link href="/" class="c-button c-button--secondary">Quitter la partie</a></li>
                     <li><button id="closeMenu" type="button" class="c-button c-button--secondary">Fermer le menu</button></li>
                 </ul>

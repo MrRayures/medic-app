@@ -10,7 +10,7 @@ let currentGame = appData.games.filter(g => g.id === currentGameID);
 export default () => /*html*/`
     <nav-bar></nav-bar>
     
-    <div class="c-content c-content--page">
+    <div class="c-content c-content--localisation">
         <h1 class="c-title">Localisation de la blessure</h1>
 
         <injury-localisation></injury-localisation>

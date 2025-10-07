@@ -44,14 +44,14 @@ class InjuryCheck extends HTMLElement {
             localStorage.setItem("medic_data", JSON.stringify(appData));
 
             if(currentGame[0].settings.death != true) {
-                document.location.href="/injury-treat";
+                document.location.href="/injury-info";
             } else {
                 let injuryDeath = appData.injury.filter(i => i.id === playerInjury);
                 //console.log('Mort active');
                 //console.log(playerInjury);
                 if(injuryDeath[0].death != true) {
                     //console.log("Alive !");
-                    document.location.href="/injury-treat";
+                    document.location.href="/injury-info";
                 } else {
                     if (chance(30)) {
                         //console.log("Dead !");
@@ -61,7 +61,7 @@ class InjuryCheck extends HTMLElement {
                         localStorage.setItem("medic_data", JSON.stringify(appData));
                     } else {
                         //console.log("Alive !");
-                        document.location.href="/injury-treat";
+                        document.location.href="/injury-info";
                     }
                 }
                 
