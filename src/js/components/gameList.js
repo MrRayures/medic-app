@@ -1,7 +1,4 @@
-import {formatDate} from '../utils.js';
-import {currentGameId} from '../utils.js';
-
-
+import { formatDate } from '../utils.js';
 
 // New component
 class GameList extends HTMLElement {
@@ -33,7 +30,7 @@ class GameList extends HTMLElement {
                 this.listItem.classList.add('c-gameList__item');
 
                 // Display infos
-                let currentGameID = currentGameId();
+                let currentGameID = appData.defaultSettings.currentGame;
 
                 let gameID = game.id;
                 let gameName = game.name;
@@ -56,7 +53,6 @@ class GameList extends HTMLElement {
 
                 if(gameHealTime === "") {
                     gameHealTime = appData.defaultSettings.healTime;
-                    
                 }
 
                 if (game.id === currentGameID) {

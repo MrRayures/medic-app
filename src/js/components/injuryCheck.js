@@ -80,17 +80,17 @@ class InjuryCheck extends HTMLElement {
                 <li class="c-list__item">Zone blessé : <span>${injuryLocalisationName[0].name}</span></li>
                 <li class="c-list__item">Protection ballistique : <span>${playerProtection}</span></li>
             </ul>
-            
-            <a data-link href="/injury-treat" hidden>Continuer</a>
-            <a data-link href="/player-dead" hidden>Perdu !</a>
         `;
 
         /*
-        * Diagnostic = (1/3) / 2 / gameHealTime
-        * Treat = 2/3 / gameHealTime
+        * Diagnostic = gameHealTime * (1/3)
+        * Treat = gameHealTime * (2/3)
         */
         let gameHealTime = currentGame[0].settings.healTime;
-        let diagTime = (gameHealTime / 3) / 2;
+        let diagTime = parseInt((gameHealTime * (1/3)) / 3);
+
+        console.log(gameHealTime);
+        console.log(diagTime);
 
         const msg = [
             'Connexion au serveurs...',

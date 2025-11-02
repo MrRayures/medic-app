@@ -57,7 +57,7 @@ class gameAdd extends HTMLElement {
         
 
         const saveButton = document.getElementById('save_button');
-
+        
         saveButton.onclick = () => {
             const gameId = Math.floor(Math.random() * Date.now()).toString(16);
             const gameDate = new Date().toISOString();

@@ -42,22 +42,17 @@ class PlayerStats extends HTMLElement {
         }
 
         this.innerHTML = `
-            <div class="c-blockIcon u-mb-32">
-                <div class="c-blockIcon__icon">
-                    <span class="c-icon-${statusIcon} c-icon--left"></span>
-                </div>
-                <div class="c-blockIcon__content">
-                    <ul class="c-list">
-                        <li class="c-list__item"><span>#ID${playerID}</span></li>
-                        <li class="c-list__item">Status: <span>${playerStatus}</span></li>
-                        <li class="c-list__item">Le <span>${playerDate}</span> à <span>${playerTime}</span></li>
-                        <li class="c-list__item">Zone blessé : <span>${playerInjuryLocalisation[0].name}</span></li>
-                        <li class="c-list__item">Blessure : <span>${playerInjury[0].name}</span></li>
-                        <li class="c-list__item">Protection ballistique : <span>${playerProtection}</span></li>
-                    </ul>
-                </div>
+            <div class="c-blockCorner u-full-h">
+                <span class="c-icon-${statusIcon} c-icon--left"></span>
+                <ul class="c-list">
+                    <li class="c-list__item"><span>#ID${playerID}</span></li>
+                    <li class="c-list__item">Status: <span>${playerStatus}</span></li>
+                    <li class="c-list__item">Le <span>${playerDate}</span> à <span>${playerTime}</span></li>
+                    <li class="c-list__item">Zone blessé : <span>${playerInjuryLocalisation[0].name}</span></li>
+                    <li class="c-list__item">Blessure : <span>${playerInjury[0].name}</span></li>
+                    <li class="c-list__item">Protection ballistique : <span>${playerProtection}</span></li>
+                </ul>
             </div>
-            
         `;
         
     }

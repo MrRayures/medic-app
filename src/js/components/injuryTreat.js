@@ -34,7 +34,7 @@ class InjuryTreat extends HTMLElement {
             this.stepItem.classList.add('c-injuryTreat__step');
 
             this.stepItem.innerHTML = `
-                <span class="c-injuryTreat__number">${count}</span>
+                <span class="c-icon-${step.id} c-icon--left"></span>
             `;
             this.injuryHeaderSteps.appendChild(this.stepItem);
         });
@@ -57,15 +57,15 @@ class InjuryTreat extends HTMLElement {
 
             let button;
             if (index === injuryList[0].steps.length - 1){ 
-                button = `<button data-next="${count + 1}" type="button" class="c-button c-button--primary c-injuryTreat__button" disabled>Terminer</button>`;
+                button = `<button data-next="${count + 1}" type="button" class="c-button c-button--primary c-button--icon-right c-icon-check c-injuryTreat__button" disabled>Terminer</button>`;
             } else {
-                button = `<button data-next="${count + 1}" type="button" class="c-button c-button--primary c-injuryTreat__button" disabled>Etape suivante</button>`;
+                button = `<button data-next="${count + 1}" type="button" class="c-button c-button--primary c-button--icon-right c-icon-arrow-right c-injuryTreat__button" disabled>Etape suivante</button>`;
             }
 
             this.listItem.innerHTML = `
                 <h2 class="c-injuryTreat__title">
                     <span id="progress" class="c-injuryTreat__progress"></span>
-                    <span class="c-icon-${step.id} c-icon--left"></span>
+                    
                     <p>${step.title}</p>
                     <span id="percent" class="c-injuryTreat__percent"></span>
                 </h2>
@@ -77,7 +77,7 @@ class InjuryTreat extends HTMLElement {
         });
 
         let gameHealTime = currentGame[0].settings.healTime;
-        let gameTotalTreatTime = (gameHealTime / 3) * 2;
+        let gameTotalTreatTime = gameHealTime * (2/3);
         let gameTreatSteps = injuryList[0].steps.length;
         let gameTreatStepHealTime = parseInt(gameTotalTreatTime / gameTreatSteps);
 

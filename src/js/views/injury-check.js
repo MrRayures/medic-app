@@ -1,9 +1,9 @@
-import "../components/navbar.js";
 import "../components/gameFooter.js";
 import "../components/injuryCheck.js";
+import "../components/navbar.js";
 
 export default () => /*html*/`
-    <nav-bar></nav-bar>
+    <nav-bar data-page="ingame"></nav-bar>
     
     <div class="c-content c-content--page">
         <h1 class="c-title">Diagnostique en cours..</h1>

@@ -74,7 +74,7 @@ if (localStorage.getItem("medic_data") === null) {
                     },
                     {
                         "id": "defibrilator",
-                        "title": "Effectuer un massage cardiaque au joueur. Si ça ne suffit pas utliser le défibrilateur"
+                        "title": "Effectuer un massage cardiaque au joueur et/ou utliser le défibrilateur"
                     },
                 ]
             },
@@ -143,24 +143,35 @@ if (localStorage.getItem("medic_data") === null) {
                 "injury_protection": ["bleeding", "dislocation", "fracture"]
             }
         ],
+        "perks": [
+            {
+                "id": "instant_heal",
+                "name": "Soin instantané",
+                "unlock_lvl": "3",
+                "recharge_time": "10"
+            }
+        ],
         "games": [
             {
                 "id": "468e5789c9",
-                "name": "Partie de test",
+                "name": "Partie d'exemple",
                 "date": "2025-10-21T13:28:06.419Z",
                 "location": "Angoulême",
                 "settings": 
                     {
                         "death": false,
-                        "healTime": "30"
+                        "healTime": "30",
+                        "medicLvl": "3",
+                        "medicXp": "250",
+                        "medicPerks": ["instant_heal"]
                     },
                 "players": [
                     {
                         "id": "001",
                         "name": "",
                         "date": "2025-10-21T15:28:06.419Z",
-                        "localisation": "Tête",
-                        "injury": "Hémoragie",
+                        "localisation": "head",
+                        "injury": "bleeding",
                         "protection": false,
                         "dead": true,
                         "treated": true
@@ -169,8 +180,8 @@ if (localStorage.getItem("medic_data") === null) {
                         "id": "002",
                         "name": "",
                         "date": "2025-10-21T15:45:06.419Z",
-                        "localisation": "Bras gauche",
-                        "injury": "Fracture",
+                        "localisation": "left_arm",
+                        "injury": "fracture",
                         "protection": true,
                         "dead": false,
                         "treated": true
@@ -179,8 +190,8 @@ if (localStorage.getItem("medic_data") === null) {
                         "id": "003",
                         "name": "",
                         "date": "2025-10-21T15:45:06.419Z",
-                        "localisation": "Bras droit",
-                        "injury": "Luxation",
+                        "localisation": "right_arm",
+                        "injury": "dislocation",
                         "protection": true,
                         "dead": false,
                         "treated": true
@@ -189,8 +200,8 @@ if (localStorage.getItem("medic_data") === null) {
                         "id": "004",
                         "name": "",
                         "date": "2025-10-21T15:45:06.419Z",
-                        "localisation": "Bras droit",
-                        "injury": "Hémoragie",
+                        "localisation": "right_arm",
+                        "injury": "bleeding",
                         "protection": false,
                         "dead": false,
                         "treated": true

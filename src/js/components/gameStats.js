@@ -1,6 +1,3 @@
-import {formatDate} from '../utils.js';
-import {formatTime} from '../utils.js';
-import {gameData} from '../utils.js';
 
 // New component
 class GameStats extends HTMLElement {
@@ -13,8 +10,6 @@ class GameStats extends HTMLElement {
         let currentGameID = appData.defaultSettings.currentGame;
         let currentGame = appData.games.filter(g => g.id === currentGameID);
 
-        console.log(currentGame[0]);
-        console.log(gameData());
 
         // Current player data
         let playerTotal = currentGame[0].players.length;
@@ -23,9 +18,10 @@ class GameStats extends HTMLElement {
         let playerProtected = currentGame[0].players.filter(p => p.protection).length;
         let playerProtectePercentage = (playerProtected / playerTotal) * 100;
 
-        if(playerProtected.length != undefined){
-            playerProtectePercentage = playerProtectePercentage.toFixed(2) + "%";
+        console.log(playerProtected)
 
+        if(playerProtected != 0){
+            playerProtectePercentage = playerProtectePercentage.toFixed(0) + "%";
         } else {
             playerProtectePercentage = "0";
         }
@@ -56,7 +52,10 @@ class GameStats extends HTMLElement {
             mostCommonInjury = ["Aucune", "0"];
             mostCommonLocalisation = ["Aucune", "0"];
         }
-        
+
+        let mostCommonInjuryName = appData.injury.filter(el => el.id === mostCommonInjury[0]);
+        let mostCommonLocalisationName = appData.localisation.filter(el => el.id === mostCommonLocalisation[0]);
+
         // Create stats list
         this.listStats = document.createElement('ul');
         this.listStats.classList.add('c-list', 'c-list--corner');
@@ -64,8 +63,8 @@ class GameStats extends HTMLElement {
             <li class="c-list__item">Total : <span>${playerTotal}</span></li>
             <li class="c-list__item">Soigné(s) : <span>${playerTotal - playerDead}</span></li>
             <li class="c-list__item">Décédé(s) : <span>${playerDead}</span></li>
-            <li class="c-list__item">Zone la plus endommagée: <span>${mostCommonLocalisation[0]} (${mostCommonLocalisation[1]})</span></li>
-            <li class="c-list__item">Blessure la plus courante : <span>${mostCommonInjury[0]} (${mostCommonInjury[1]})</span></li>
+            <li class="c-list__item">Zone la plus endommagée: <span>${mostCommonLocalisationName[0].name} (${mostCommonLocalisation[1]})</span></li>
+            <li class="c-list__item">Blessure la plus courante : <span>${mostCommonInjuryName[0].name} (${mostCommonInjury[1]})</span></li>
             <li class="c-list__item">Avec protection ballistique : <span>${playerProtectePercentage}</span></li>
         `;
         this.appendChild(this.listStats);

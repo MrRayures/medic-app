@@ -20,7 +20,8 @@ class GameSettings extends HTMLElement {
         this.innerHTML = /*html*/`
             <ul class="c-list c-list--corner">
                 <li class="c-list__item">Partie : <span>${currentGame[0].name}</span></li>
-                <li class="c-list__item">Temps de soin : <span>${gameHealTime}</span></li>
+                <li class="c-list__item">Lieux : <span>${currentGame[0].location}</span></li>
+                <li class="c-list__item">Temps de soin : <span>${gameHealTime}s</span></li>
                 <li class="c-list__item">Mort active : <span>${gameDeath}</span></li>
             </ul>
         `;

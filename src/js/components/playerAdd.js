@@ -25,9 +25,10 @@ class PlayerAdd extends HTMLElement {
         
         
         this.innerHTML = /*html*/`
-            <a data-link href="/injury-localisation" id="addButton" class="c-button c-button--lg c-button--primary">
+            <a data-link href="/injury-localisation" id="addButton" class="c-button c-button--tile c-icon-person-standing c-button--primary">
                 ${this.label}
             </a>
+            
         `;
 
         let addButton = this.querySelector("#addButton");

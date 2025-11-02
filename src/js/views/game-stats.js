@@ -1,22 +1,14 @@
-import "../components/navbar.js";
 import "../components/gameStats.js";
 import "../components/gameStatsPlayer.js";
+import "../components/navbar.js";
 
 export default () => /*html*/`
-    <nav-bar></nav-bar>
-    <div class="c-content c-content--stats">
+    <nav-bar data-back="/game" data-page="game"></nav-bar>
+
+    <div class="c-content c-content--page">
         <h1 class="c-title">Stats</h1>
-
-        <div class="c-grid c-grid--stats u-mb-32">
-            <div class="u-sticky-top">
-                <game-stats></game-stats>
-
-                <a href="/game" class="c-button c-button--primary c-button--icon-left c-icon-arrow-left u-mt-32">
-                    <span class="c-button__content">Retour</span>
-                </a>
-                
-            </div>
-            <game-statsplayer></game-statsplayer>
-        </div>
+        <game-stats></game-stats>
+        <p class="c-subtitle">Joueurs soignés :</p>
+        <game-statsplayer></game-statsplayer>
     </div>
 `;

@@ -4,31 +4,27 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes" />
         <title>APP Medic - Accueil</title>
-        <link rel="manifest" href="manifest.json">
+        <link rel="manifest" href="manifest.json" />
 
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-        <link rel="stylesheet" href="./src/assets/css/app.css" />
+        <link rel="stylesheet" href="./src/assets/css/app.css?v=1" />
 
         <script type="module" src="./src/js/data.js"></script>
         <script type="module" src="./src/js/utils.js"></script>
-        
     </head>
     <body>
-
+        <div class="c-loader" id="loader" hidden>
+            <div class="c-loader__spinner"></div>
+            Chargement...
+        </div>
         <main id="app" class="c-layout"></main>
 
-        <script type="module" src="./src/js/router.js"></script> 
-        <script type="module" src="./sw.js"></script> 
-
-        <script>
-            
-        </script>
-    
+        <script type="module" src="./src/js/router.js"></script>
+        <script type="module" src="./sw.js"></script>
     </body>
-    
 </html>
