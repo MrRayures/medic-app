@@ -16,10 +16,9 @@ class Injury extends HTMLElement {
         let playerInjuryName = appData.injury.filter(i => i.id === playerData[0].injury);
 
         this.innerHTML = /*html*/`
-            <div class="c-blockCorner u-full-h">
+            <div class="c-blockCorner c-blockCorner--injury u-full-h">
                 <span class="c-icon-${playerInjuryName[0].id} c-icon--left"></span>
-                <p class="u-font-48 u-font-700 u-text-uppercase u-line-height-xs">${playerInjuryName[0].name}</p>
-                <p>☠️ Mort active</p>
+                <p class="u-font-32 u-font-700 u-text-uppercase u-line-height-xs">${playerInjuryName[0].name}</p>
             </div>
         `;  
     }

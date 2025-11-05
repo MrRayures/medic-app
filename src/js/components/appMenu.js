@@ -38,7 +38,7 @@ class appMenu extends HTMLElement {
                 <ul class="c-grid">
                     <li class="c-grid__tile ">
                         <a class="c-button c-button--primary c-button--tile c-icon-arrow-right" data-link href="/game">
-                            Continuer&nbsp;<strong>"${currentGame[0].name}"</strong>
+                            <span>Continuer <strong>"${currentGame[0].name}"</strong></span> 
                         </a>
                     </li>
                     <li class="c-grid__tile">
